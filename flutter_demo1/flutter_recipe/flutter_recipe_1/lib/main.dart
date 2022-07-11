@@ -1,4 +1,4 @@
-import 'package:dd/pages/recipe_page.dart';
+import 'package:flutter_recipe_1/pages/recipe_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
