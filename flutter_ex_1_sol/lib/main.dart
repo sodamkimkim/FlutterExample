@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
 
   // Color color = Theme.of(context).primaryColor;
 
-    @override
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -20,10 +20,12 @@ class MyApp extends StatelessWidget {
         ),
         body: ListView(
           children: [
-            Image.asset('images/lake.jpg',
-            width: 600,
-            height: 240,
-            fit: BoxFit.cover,),
+            Image.asset(
+              'images/lake.jpg',
+              width: 600,
+              height: 240,
+              fit: BoxFit.cover,
+            ),
             titleSection,
             buttonSection,
             textSection
@@ -33,7 +35,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 Widget titleSection = Container(
   padding: const EdgeInsets.all(32),
@@ -56,40 +57,38 @@ Widget titleSection = Container(
           )
         ],
       )),
-      Icon(
-        Icons.star,
-        color: Colors.red[500],
-      ),
+      Twinkle(),
       const Text('41')
     ],
   ),
 );
 Widget buttonSection = Row(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: [
-      _buildButtonColumn(Colors.lightBlue, Icons.call, 'CALL'), 
-    _buildButtonColumn(Colors.lightBlue, Icons.near_me, 'ROUTE'), 
-    _buildButtonColumn(Colors.lightBlue, Icons.share, 'SHARE')],
-  );
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    _buildButtonColumn(Colors.lightBlue, Icons.call, 'CALL'),
+    _buildButtonColumn(Colors.lightBlue, Icons.near_me, 'ROUTE'),
+    _buildButtonColumn(Colors.lightBlue, Icons.share, 'SHARE')
+  ],
+);
 
-  Column _buildButtonColumn(Color color, IconData icon, String label) {
-    return Column(
-      children: [
-        Icon(icon, color: color),
-        Container(
-          margin: const EdgeInsets.only(top: 8),
-          child: Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: color,
-            ),
+Column _buildButtonColumn(Color color, IconData icon, String label) {
+  return Column(
+    children: [
+      Icon(icon, color: color),
+      Container(
+        margin: const EdgeInsets.only(top: 8),
+        child: Text(
+          label,
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+            color: color,
           ),
         ),
-      ],
-    );
-  }
+      ),
+    ],
+  );
+}
 
 Widget textSection = const Padding(
   padding: EdgeInsets.all(32),
@@ -103,3 +102,40 @@ Widget textSection = const Padding(
     softWrap: true,
   ),
 );
+
+class Twinkle extends StatefulWidget {
+  const Twinkle({Key? key}) : super(key: key);
+
+  @override
+  State<Twinkle> createState() => _TwinkleState();
+}
+
+class _TwinkleState extends State<Twinkle> {
+  Color starColor = Colors.red;
+
+  void starTwinkle() {
+    setState(() {
+      starColor = (starColor == Colors.red) ? Colors.blue : Colors.red;
+      print("setState호출");
+    });
+  }
+
+
+  void initState() {
+    starColor = Colors.blue;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        starTwinkle();
+      },
+      child: Icon(
+        Icons.star,
+        color: starColor,
+
+      ),
+    );
+  }
+}

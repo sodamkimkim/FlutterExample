@@ -27,8 +27,7 @@ class DayAndNight extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 color: Colors.redAccent,
-              ),
-            ),
+              ),            ),
           ],
         ),
       ),
