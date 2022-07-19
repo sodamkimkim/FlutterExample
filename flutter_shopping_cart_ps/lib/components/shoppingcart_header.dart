@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shopping_cart/constants.dart';
+import 'package:flutter_shopping_cart_ps/constants.dart';
 
 class ShoppingCartHeader extends StatefulWidget {
   const ShoppingCartHeader({Key? key}) : super(key: key);
@@ -10,7 +10,6 @@ class ShoppingCartHeader extends StatefulWidget {
 
 class _ShoppingCartHeaderState extends State<ShoppingCartHeader> {
   int selectedId = 0;
-
   List<String> selectedPic = [
     "assets/p1.jpeg",
     "assets/p2.jpeg",
@@ -31,19 +30,19 @@ class _ShoppingCartHeaderState extends State<ShoppingCartHeader> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _buildHeaderSelectorButton(0, Icons.directions_bike),
-              _buildHeaderSelectorButton(1, Icons.motorcycle),
-              _buildHeaderSelectorButton(2, Icons.local_taxi),
-              _buildHeaderSelectorButton(3, Icons.airplanemode_active),
+              _buildHeaderSelectorButton(1, Icons.directions_bike),
+              _buildHeaderSelectorButton(2, Icons.directions_bike),
+              _buildHeaderSelectorButton(3, Icons.directions_bike),
             ],
           ),
-        )
+        ),
       ],
     );
   }
 
   Widget _buildHeaderPic() {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16),
       child: AspectRatio(
         aspectRatio: 5 / 3,
         child: Image.asset(
@@ -52,7 +51,7 @@ class _ShoppingCartHeaderState extends State<ShoppingCartHeader> {
         ),
       ),
     );
-  } // end of _buildHeaderPic
+  }
 
   Widget _buildHeaderSelectorButton(int id, IconData mIcon) {
     return Container(
@@ -63,13 +62,16 @@ class _ShoppingCartHeaderState extends State<ShoppingCartHeader> {
         borderRadius: BorderRadius.circular(20),
       ),
       child: IconButton(
-          onPressed: (() {
+          onPressed: () {
             setState(() {
               selectedId = id;
+              print("버튼 눌러짐. selectedId = id");
             });
-            print("버튼 눌러짐. selectedId = id");
-          }),
-          icon: Icon(mIcon, color: Colors.black)),
+          },
+          icon: Icon(
+            mIcon,
+            color: Colors.black,
+          )),
     );
   }
 }
