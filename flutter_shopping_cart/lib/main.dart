@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shopping_cart/components/shoppingcart_detail.dart';
 import 'package:flutter_shopping_cart/components/shoppingcart_header.dart';
 import 'package:flutter_shopping_cart/theme.dart';
 
@@ -27,7 +28,10 @@ class ShoppingCartPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
-        children: [ShoppingCartHeader()],
+        children: [
+          ShoppingCartHeader(),
+          ShoppingCartDetail(),
+        ],
       ),
     );
   }
