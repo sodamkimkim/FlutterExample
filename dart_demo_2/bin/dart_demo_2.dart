@@ -40,7 +40,7 @@ void main() {
   print(description);
 }
 
-// late는, 선언 후 초기화된 null이 아닌 변수를 선언.
+// late는, 선언 후 초기화되는 null이 아닌 변수를 선언.
 // 변수를 느리게 초기화한다.
 // late String description 에서 late지우면 오류난다. 값을 초기화 해야하기 때문.
 late String description;
