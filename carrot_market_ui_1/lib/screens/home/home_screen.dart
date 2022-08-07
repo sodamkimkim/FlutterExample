@@ -2,6 +2,8 @@ import 'package:carrot_market_ui_1/models/product.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'components/product_item.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -9,24 +11,29 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.black,
-        ),
+        iconTheme: IconThemeData(color: Colors.black),
         title: Row(
           children: [
             const Text("좌동"),
-            const SizedBox(
-              width: 4.0,
-            ),
-            const Icon(CupertinoIcons.chevron_down, size: 15)
+            const SizedBox(width: 4.0),
+            const Icon(CupertinoIcons.chevron_down, size: 15),
           ],
         ),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.search)),
-          IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.list_dash)),
-          IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.bell)),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(CupertinoIcons.search),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(CupertinoIcons.list_dash),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(CupertinoIcons.bell),
+          )
         ],
-        bottom: PreferredSize(
+        bottom: const PreferredSize(
           preferredSize: Size.fromHeight(0.5),
           child: Divider(
             thickness: 0.5,
@@ -35,13 +42,11 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: ListView.seperated(
+      body: ListView.separated(
         itemBuilder: (context, index) {
-          return Container(
-            child: Text("index : $index"),
-          );
+          return ProductItem(product: productList[index]);
         },
-        seperatorBuilder: (context, index) => Divider(),
+        separatorBuilder: (context, index) => Divider(),
         itemCount: productList.length,
       ),
     );
