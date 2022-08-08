@@ -1,6 +1,8 @@
-import 'package:flutter/cupertino.dart';
+import 'package:carrot_market_ui_1/models/icon_menu.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'components/card_icon_menu.dart';
+import 'components/my_carrot_header.dart';
 
 class MyCarrotScreen extends StatelessWidget {
   const MyCarrotScreen({Key? key}) : super(key: key);
@@ -8,48 +10,34 @@ class MyCarrotScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: Text(
-          "나의 당근",
-        ),
+        title: const Text("나의 당근"),
         actions: [
           IconButton(
+            color: Colors.black,
             onPressed: () {},
-            icon: Icon(CupertinoIcons.settings),
+            icon: const Icon(Icons.settings),
           ),
         ],
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(5),
+        bottom: const PreferredSize(
           child: Divider(
-            color: Colors.grey[300],
-            thickness: 2,
-            height: 5,
+            thickness: 0.5,
+            height: 0.5,
+            color: Colors.grey,
           ),
+          preferredSize: Size.fromHeight(0.5),
         ),
       ),
-      body: Container(
-        color: Colors.grey[200],
-        child: ListView(
-          children: [
-            MyCarrotProfile(),
-            SizedBox(height: 7),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 15),
-              color: Colors.white,
-              child: Column(
-                children: [
-                  ListItem(icon: FontAwesomeIcons.locationDot, text: "내 동네 설정"),
-                  ListItem(
-                      icon: FontAwesomeIcons.downLeftAndUpRightToCenter,
-                      text: "동네 인증하기"),
-                  ListItem(icon: FontAwesomeIcons.tag, text: "키워드 알림"),
-                  ListItem(
-                      icon: FontAwesomeIcons.tableCellsLarge, text: "모아보기"),
-                ],
-              ),
-            )
-          ],
-        ),
+      body: ListView(
+        children: [
+          MyCarrotHeader(),
+          const SizedBox(height: 8.0),
+          CardIconMenu(iconMenuList: iconMenu1),
+          CardIconMenu(iconMenuList: iconMenu2),
+          const SizedBox(height: 8.0),
+          CardIconMenu(iconMenuList: iconMenu3),
+        ],
       ),
     );
   }
