@@ -74,3 +74,29 @@ class _HomeScreen3State extends State<HomeScreen3> {
         ));
   }
 }
+
+/* 
+
+Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      selected = !selected;
+                      _width = selected ? 500 : 100;
+
+                      print(selected);
+                    });
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(color: Colors.blue[100]),
+                    child: Text("버튼"),
+                  ),
+                ),
+                Text("d"),
+                Text("d"),
+                Text("d"),
+                Text("d")
+              ],
+            ) */
